@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--悬浮在文字上会显示某种信息-->
+    <div id="app2">
+        <span v-bind:title='messages'>
+ 显示某些信息
+</span>
+    </div>
+</body>
+
+</html>
+<script src='https://unpkg.com/vue'></script>
+<script>
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            messages: '现实与理想' + new Date().toLocaleString()
+        }
+    })
+
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app9">
+        <!-- <div v-bind:class="{nene:enen,'text-dange':aa}"> -->
+        <!-- <div v-bind:class="bb"></div> -->
+        <!-- <div v-bind:class="nn"></div> -->
+        <!-- <div v-bind:class="[activeClass, errorClass]"></div> -->
+        <!-- <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div> -->
+        <!--当有多个条件 class 时这样写有些繁琐。  -->
+        <!-- <div v-bind:class="[{ active: isActive }, errorClass]"></div> -->
+        <!-- <my-component class='mm'></my-component -->
+        <my-component v-bind:class="{ active: isActive }"></my-component>
+    </div>
+    </div>
+</body>
+
+</html>
+<script src='https://unpkg.com/vue'></script>
+<script>
+    // var app9 = new Vue({
+    //     el:'#app9',
+    //     data:{
+    //         enen:true,
+    //         aa:true
+    //     }
+
+    // })
+    // var app9 = new Vue({
+    //     el:'#app9',
+    //     data:{
+    //        bb:{
+    //         aa:true,
+    //         bb:true
+    //        }
+    //     }
+
+    // }) 
+    // 常用
+    // var app9 = new Vue({
+    //     el:'#app9',
+    //     data:{
+    //         enen:true,
+    //         aa:true
+    //     },
+    //     computed:{
+    //      nn:function(){
+    //          return{
+    //              haha:this.enen && !this.aa,
+    //              'bb': this.enen
+    //          }
+    //      }
+    //     }
+
+    // })
+    Vue.component('my-component', {
+        template: '<p class="foo bar">Hi</p>'
+    })
+    var app9 = new Vue({
+        el: '#app9',
+        data: {
+            isActive: true
+        }
+    })
+
+    // var app9 = new Vue({
+    //     el: '#app9',
+    //     data: {
+    //         activeClass: 'active',
+    //         errorClass: 'text-danger',
+    //         isActive:true
+    //     }
+    // })
+
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app8">
+        <!--一次性插值  -->
+        <span v-once>这个不会改变:{{msg}}</span>
+        <div v-html='rawhtml'></div>
+        <div v-bind:id='a'></div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        <!--<!这是语句，不是表达式 -->
+        <!-- {{ var a = 1 }} -->
+        <!-- 流控制也不会生效，请使用三元表达式 -->
+        <!-- {{ if (ok) { return message } }}  -->
+        <div>{{ number + 1 }}</div>
+        <div>{{ ok ? 'YES' : 'NO' }}</div>
+        <div>{{ message.split('').reverse().join('') }}</div>
+        <!-- <div v-bind:id="'list-' + id"></div> -->
+        <a v-bind:href="url">百度</a>
+        <!--监听事件  -->
+        <a v-on:click="doSomething">
+    adasd</a>
+        <form v-on:submit.prevent="onSubmit">
+            <input type="submit" name="" value="">
+        </form>
+        <!--v-bind缩写  -->
+        <!-- 完整语法 -->
+        <a v-bind:href="url"></a>
+        <!-- 缩写 -->
+        <a :href="url"></a>
+        <!--v-on的缩写  -->
+        <!-- 完整语法 -->
+        <a v-on:click="doSomething"></a>
+        <!-- 缩写 -->
+        <a @click="doSomething"></a>
+
+
+    </div>
+</body>
+
+</html>
+<script src='https://unpkg.com/vue'></script>
+<script>
+    var app8 = new Vue({
+        el: '#app8',
+        data: {
+            msg: 'hahsa',
+            rawhtml: 'dasda',
+            a: 'a',
+            isButtonDisabled: false,
+            number: 3,
+            ok: false,
+            message: 'abcd',
+            url: 'www.baidu.com'
+        },
+        methods: {
+            doSomething: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+
+
+        }
+    })
+app8.msg = 'vvvv' 
+</script>

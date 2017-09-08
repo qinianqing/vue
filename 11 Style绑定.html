@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app11">
+        <!-- <div v-bind:style="{color:aa,fontSize:fontSize +'px'}"></div> -->
+        <!-- <div v-bind:style="styleObject"></div> -->
+        <!-- <div v-bind:style="[baseStyles, overridingStyles]"></div> -->
+        <!--多重值  -->
+        <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
+
+
+    </div>
+</body>
+
+</html>
+<script src='https://unpkg.com/vue'></script>
+<script>
+    var app11 = new Vue({
+        el: '#app11',
+        data: {
+            //   aa:'red',
+            //   fontSize:20
+            // styleObject: {
+            // color: 'red',
+            // fontSize: '13px'
+
+        //     baseStyles: {
+        //         color: 'red'
+        //     },
+
+        //     overridingStyles: {
+        //         fontSize: '21px'
+        //     }
+        }
+    })
+
+</script>

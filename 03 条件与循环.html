@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app3">
+        <!--dom结构到数据  -->
+        <p v-if="seens">
+            你看到我了
+        </p>
+    </div>
+    <div id="app4">
+        <ul>
+            <!--遍历循环数据  -->
+            <li v-for='item in items'>
+                {{item.text}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var app3 = new Vue({
+        el: '#app3',
+        data: {
+            seens: true
+        }
+    })
+    var app4 = new Vue({
+        el: '#app4',
+        data: {
+            items: [
+                { text: 'jichu1' },
+                { text: 'jichu2' },
+                { text: 'jichu3' }
+            ]
+        }
+    })
+
+</script>
