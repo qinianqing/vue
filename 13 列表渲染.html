@@ -12,15 +12,15 @@
     {{ item.message }}
   </li>
 </ul> -->
-<ul id="example-2">
+<!-- <ul id="example-2">
   <li v-for="(item, index) in items">
     {{ parentMessage }} - {{ index }} - {{ item.message }}
   </li>
-</ul>
+</ul> -->
 <!--in of 都可以  -->
 <!-- <div v-for="item of items"></div> -->
-<ul id="v-for-object" class="demo">
-  <li v-for="value in object">
+<!-- <ul id="v-for-object" class="demo"> -->
+  <!-- <li v-for="value in object">
     {{ value }}
   </li>
 </ul>
@@ -29,15 +29,85 @@
 </div>
 <div v-for="(value, key, index) in object">
   {{ index }}. {{ key }}: {{ value }}
-</div>
+</div> -->
 <!----------------------------------------------  -->
-<div v-for="item in items" :key="item.id">
+<!-- <div v-for="item in items" :key="item.id">
   <!-- 内容 -->
+<!-- </div>  -->
+<!-- <div id="app1">
+  <li v-for='n in evenNumbers'>
+    {{ n }}
+  </li>
+</div> -->
+<!-- <li v-for="n in even(numbers)">{{ n }}</li> -->
+<!-- <div id='app1'>
+  <span v-for="n in 10">{{ n }} </span>
+</div> -->
+<!-- <ul>
+  <template v-for="item in items">
+    <li>{{ item.msg }}</li>
+    <li class="divider"></li>
+  </template>
+</ul> -->
+<div id="todo-list-example">
+  <input
+    v-model="newTodoText"
+    v-on:keyup.enter="addNewTodo"
+    placeholder="Add a todo"
+  >
+  <ul>
+    <li
+      is="todo-item"
+      v-for="(todo, index) in todos"
+      v-bind:key="todo.id"
+      v-bind:title="todo.title"
+      v-on:remove="todos.splice(index, 1)"
+    ></li>
+  </ul>
 </div>
 </body>
 </html>
 <script src='https://unpkg.com/vue'></script>
 <script>
+  Vue.component('todo-item', {
+  template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">X</button>\
+    </li>\
+  ',
+  props: ['title']
+})
+new Vue({
+  el: '#todo-list-example',
+  data: {
+    newTodoText: '',
+    todos: [
+      {
+        id: 1,
+        title: 'Do the dishes',
+      },
+      {
+        id: 2,
+        title: 'Take out the trash',
+      },
+      {
+        id: 3,
+        title: 'Mow the lawn'
+      }
+    ],
+    nextTodoId: 4
+  },
+  methods: {
+    addNewTodo: function () {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
+    }
+  }
+})
 //     var example1 = new Vue({
 //   el: '#example-1',
 //   data: {
@@ -47,27 +117,64 @@
 //     ]
 //   }
 // })
-var example2 = new Vue({
-  el: '#example-2',
-  data: {
-    parentMessage: 'Parent',
-    items: [
-      { message: 'Foo' },
-      { message: 'Bar' }
-    ]
-  }
-})
-new Vue({
-  el: '#v-for-object',
-  data: {
-    object: {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: 30
-    }
-  }
-})
+// var example2 = new Vue({
+//   el: '#example-2',
+//   data: {
+//     parentMessage: 'Parent',
+//     items: [
+//       { message: 'Foo' },
+//       { message: 'Bar' }
+//     ]
+//   }
+// })
+// new Vue({
+//   el: '#v-for-object',
+//   data: {
+//     object: {
+//       firstName: 'John',
+//       lastName: 'Doe',
+//       age: 30
+//     }
+//   }
+// })
 
+// var vm = new Vue({
+//   data: {
+//     userProfile: {
+//       name: 'Anika'
+//     }
+//   }
+// })
+// Vue.set(vm.userProfile, 'age', 27)
+// this.$set(this.userProfile, 'age', 27)
+// // 已有对象赋予多个新属性
+// this.userProfile = Object.assign({}, this.userProfile, {
+//   age: 27,
+//   favoriteColor: 'Vue Green'
+// })
+// new Vue({
+//   el:'#app1',
+//   data: {
+//   // numbers: [ 1, 2, 3, 4, 5 ]
+//   }
+// })
+// computed: {
+//   evenNumbers: function () {
+//     return this.numbers.filter(function (number) {
+//       return number % 2 === 0
+//     })
+//   }
+// }
 
-
+// })
+// data: {
+//   numbers: [ 1, 2, 3, 4, 5 ]
+// },
+// methods: {
+//   even: function (numbers) {
+//     return numbers.filter(function (number) {
+//       return number % 2 === 0
+//     })
+//   }
+// }
 </script>
